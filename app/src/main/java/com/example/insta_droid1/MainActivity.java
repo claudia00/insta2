@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    bottomNavigationView.setSelectedItemId(R.id.action_home);
+
     }
 
 }
