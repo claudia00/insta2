@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.insta_droid1.fragments.ComposeFragment;
+import com.example.insta_droid1.fragments.PostsFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -77,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 switch (item.getItemId()) {
-                    //TODO: swap fragment here
+                    //TODO: swap fragment here PostsFragment
                     case R.id.action_home:
-                        fragment = new ComposeFragment();
+                        fragment = new PostsFragment();
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_compose:
