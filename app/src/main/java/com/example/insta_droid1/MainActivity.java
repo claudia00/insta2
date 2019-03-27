@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.insta_droid1.fragments.ComposeFragment;
 import com.example.insta_droid1.fragments.PostsFragment;
+import com.example.insta_droid1.fragments.ProfileFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_profile:
                     default:
                         //TODO: swap fragment here
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                 }
