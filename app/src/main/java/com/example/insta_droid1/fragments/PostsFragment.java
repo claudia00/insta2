@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +22,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostsFragment extends Fragment {
+public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     public static final String TAG = "PostsFragment";
 
@@ -29,17 +30,23 @@ public class PostsFragment extends Fragment {
     protected PostsAdapter adapter;
     protected List<Post> mPosts;
 
-//onCreateView inflate in the view
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    //onCreateView inflate in the view
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_posts, container, false);
-                //super.onCreateView(inflater, container, savedInstanceState);
+
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rvPosts = view.findViewById(R.id.rvPosts);
+
+        swipeRefreshLayout = view.findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
         //create the data source
         mPosts = new ArrayList<>();
@@ -83,5 +90,12 @@ public class PostsFragment extends Fragment {
             }
         });
         }
+
+
+    @Override
+    public void onRefresh() {
+        queryPosts();
+        swipeRefreshLayout.setRefreshing(false);
+    }
 
 }

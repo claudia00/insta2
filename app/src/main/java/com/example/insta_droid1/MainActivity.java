@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,20 +37,26 @@ import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+//implements SwipeRefreshLayout.OnRefreshListener
     private final String TAG = "MainActivity";
 
     private BottomNavigationView bottomNavigationView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+//        swipeRefreshLayout.setOnRefreshListener(this);
+        //        swipeRefreshLayout.setOnRefreshListener((SwipeRefreshLayout.OnRefreshListener) this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Begin the transaction
         final FragmentManager fragmentManager = getSupportFragmentManager();
+        //.beginTransaction().add(R.id.container, new SwipeRefreshLayout()).commit()
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
 
 
 //        ParseUser currentUser = ParseUser.getCurrentUser();
@@ -99,8 +107,33 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    bottomNavigationView.setSelectedItemId(R.id.action_home);
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
 
     }
 
+//
+//    @Override
+//    public void onRefresh() {
+//        Toast.makeText(MainActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
+//        (new Handler()).postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                swipeRefreshLayout.setRefreshing(false);
+//            }
+//        }, 200);
+//    }
+
+    // @Override
+    //        public void onRefresh() {
+    //            Toast.makeText(MainActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
+    //            //swipeRefreshLayout.setRefreshing(true);
+    //
+    //            (new Handler()).postDelayed(new Runnable() {
+    //                @Override
+    //                public void run() {
+    //                    swipeRefreshLayout.setRefreshing(false);
+    //                }
+    //            }, 200);
+    //        }
 }
+

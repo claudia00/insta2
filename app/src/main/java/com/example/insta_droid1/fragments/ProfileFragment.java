@@ -1,5 +1,6 @@
 package com.example.insta_droid1.fragments;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 
 import com.example.insta_droid1.Post;
@@ -12,6 +13,7 @@ import com.parse.ParseUser;
 import java.util.List;
 
 public class ProfileFragment extends PostsFragment {
+
 
     @Override
     protected void queryPosts() {
@@ -47,4 +49,6 @@ public class ProfileFragment extends PostsFragment {
         });
 
     }
+
+
 }

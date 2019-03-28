@@ -63,12 +63,23 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 //post.getImage();
                 ParseFile image = post.getImage();
                 if(image != null) {
-                    Glide.with(context).load(image.getUrl().replace("http://", "https://")).into(ivImage);
+                    Glide.with(context).load(image.getUrl()).into(ivImage);
+                    //.replace("http://", "https://"))
 
                 }
                 tvDescription.setText(post.getDescription());
             }
 
         }
+    public void clear() {
+        posts.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Post> list) {
+        posts.addAll(list);
+        notifyDataSetChanged();
+    }
     }
 
