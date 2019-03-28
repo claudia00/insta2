@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.insta_droid1.LoginActivity;
 import com.example.insta_droid1.MainActivity;
 import com.example.insta_droid1.Post;
 import com.example.insta_droid1.R;
@@ -43,7 +44,7 @@ public class ComposeFragment extends Fragment {
     private Button btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    //private Button btnLogOut;
+    private Button btnLogOut;
 
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
@@ -71,8 +72,21 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        btnLogOut = view.findViewById(R.id.btnLogOut);
 
         //queryPosts();
+
+
+       // btnLogOut = (Button) findViewById(R.id.btnLogOut);
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseUser.logOut();
+                //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+                Intent i = new Intent(getContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -46,40 +46,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
-//        swipeRefreshLayout.setOnRefreshListener(this);
-        //        swipeRefreshLayout.setOnRefreshListener((SwipeRefreshLayout.OnRefreshListener) this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Begin the transaction
         final FragmentManager fragmentManager = getSupportFragmentManager();
-        //.beginTransaction().add(R.id.container, new SwipeRefreshLayout()).commit()
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-
-//        ParseUser currentUser = ParseUser.getCurrentUser();
-//        if (currentUser != null) {
-//            Toast.makeText(MainActivity.this, "User "+ currentUser, Toast.LENGTH_SHORT).show();
-//
-//        } else {
-//            // show the signup or login screen
-////            Intent i = new Intent(MainActivity.this, LoginActivity.class);
-////            startActivity(i);
-////            finish();
-//        }
-//
-//        btnLogOut = (Button) findViewById(R.id.btnLogOut);
-//        btnLogOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                ParseUser.logOut();
-//                //ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
-//                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-//                startActivity(i);
-//            }
-//        });
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

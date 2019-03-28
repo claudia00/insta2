@@ -1,5 +1,6 @@
 package com.example.insta_droid1.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,13 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.insta_droid1.LoginActivity;
 import com.example.insta_droid1.Post;
 import com.example.insta_droid1.PostsAdapter;
 import com.example.insta_droid1.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,18 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
 
+
+
+                ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            Toast.makeText(getContext(), "User "+ currentUser, Toast.LENGTH_SHORT).show();
+
+        } else {
+            //show the signup or login screen
+            Intent i = new Intent(getContext(), LoginActivity.class);
+            startActivity(i);
+            //finish();
+        }
         //create the data source
         mPosts = new ArrayList<>();
         //create the adapter
